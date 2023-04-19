@@ -37,7 +37,7 @@ function App() {
 			results.data[0].lat +
 			',' +
 			results.data[0].lon +
-			'&zoom=15&size=300x300&markers=icon:large-red-cutout|' +
+			'&zoom=15&size=400x400&markers=icon:large-red-cutout|' +
 			results.data[0].lat +
 			',' +
 			results.data[0].lon;
