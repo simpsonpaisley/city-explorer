@@ -9,7 +9,7 @@ function App() {
 	const [userResults, setUserResults] = useState('');
 	const [userLat, setUserLat] = useState('');
 	const [userLong, setUserLong] = useState('');
-
+	const [userMap, setUserMap] = useState('');
 	function userSearchHandler(event) {
 		setUserSearch(event.target.value);
 	}
@@ -25,9 +25,26 @@ function App() {
 		const results = await Axios.get(API);
 		console.log(results);
 		setUserResults(results.data[0].display_name);
-		console.log(userResults);
+
 		setUserLat(results.data[0].lat);
+
 		setUserLong(results.data[0].lon);
+
+		const map =
+			'https://maps.locationiq.com/v3/staticmap?key=' +
+			process.env.REACT_APP_APIKEY +
+			'&center=' +
+			results.data[0].lat +
+			',' +
+			results.data[0].lon +
+			'&zoom=15&size=300x300&markers=icon:large-red-cutout|' +
+			results.data[0].lat +
+			',' +
+			results.data[0].lon;
+
+		const userMapResults = await Axios.get(map);
+
+		setUserMap(userMapResults.request.responseURL);
 	}
 
 	return (
@@ -41,6 +58,7 @@ function App() {
 				userLat={userLat}
 				userLong={userLong}
 				userResults={userResults}
+				userMap={userMap}
 			/>
 		</div>
 	);
