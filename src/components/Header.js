@@ -5,7 +5,8 @@ function Header() {
 		<div className="header">
 			<img
 				src={Logo}
-				className="logo"></img>
+				className="logo"
+				alt="logo"></img>
 			<h1>City Explorer</h1>
 		</div>
 	);
