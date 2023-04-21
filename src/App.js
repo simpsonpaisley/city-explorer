@@ -4,6 +4,7 @@ import Axios from 'axios';
 import Header from './components/Header';
 import Form from './components/Form';
 import Results from './components/Results';
+import Footer from './components/Footer';
 function App() {
 	const [userSearch, setUserSearch] = useState('');
 	const [userResults, setUserResults] = useState('');
@@ -50,16 +51,19 @@ function App() {
 	return (
 		<div>
 			<Header />
-			<Form
-				userSearchHandler={userSearchHandler}
-				userResultsHandler={userResultsHandler}
-			/>
-			<Results
-				userLat={userLat}
-				userLong={userLong}
-				userResults={userResults}
-				userMap={userMap}
-			/>
+			<div className="mainBackground">
+				<Form
+					userSearchHandler={userSearchHandler}
+					userResultsHandler={userResultsHandler}
+				/>
+				<Results
+					userLat={userLat}
+					userLong={userLong}
+					userResults={userResults}
+					userMap={userMap}
+				/>
+			</div>
+			<Footer />
 		</div>
 	);
 }

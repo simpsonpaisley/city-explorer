@@ -8,7 +8,8 @@ function Results({ userLat, userLong, userResults, userMap }) {
 			<br />
 			<img
 				src={userMap}
-				alt="map"></img>
+				alt="map"
+				className="map"></img>
 		</div>
 	);
 }
