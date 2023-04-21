@@ -1,18 +1,65 @@
 * {
 	margin: 0;
-	font-family: sans-serif;
+	font-family: 'Rubik', sans-serif;
+}
+
+.mainBackground {
+	background-image: url(./images/city.png);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	background-attachment: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
 }
 .header {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	background-color: #bdc3c7;
+	background-color: #afc7e8;
 	padding: 10px;
+	border-bottom: 2px solid black;
 }
 
 .logo {
 	width: 100px;
 	margin-right: 20px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 75vw;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 10px;
+	border: 2px solid black;
+	box-shadow: 5px 5px black;
+	padding: 20px;
+	font-size: 5vh;
+}
+
+.form input {
+	height: 5vh;
+	width: 20vw;
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 10px;
+	text-align: center;
+}
+
+.form button {
+	background-color: #afc7e8;
+	height: 8vh;
+	width: 12vw;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 3vh;
 }
 
 .results {
@@ -21,9 +68,33 @@
 	justify-content: center;
 	align-items: center;
 	margin: 100px;
+	background-color: white;
+	border-radius: 10px;
+	border: 2px solid black;
+	box-shadow: 5px 5px black;
+	padding: 20px;
 }
 
 .results h2,
 .results h3 {
 	padding: 10px;
+}
+
+h1 {
+	font-family: 'Rubik Mono One', sans-serif;
+}
+
+.footer {
+	background-color: #afc7e8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 15vh;
+	margin: 0;
+	border-top: 2px solid black;
+}
+
+.map {
+	border: 2px solid black;
+	border-radius: 5px;
 }
