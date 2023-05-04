@@ -4,13 +4,15 @@ import Axios from 'axios';
 import Header from './components/Header';
 import Form from './components/Form';
 import Results from './components/Results';
+import Forecast from './components/Forecast';
 import Footer from './components/Footer';
 function App() {
 	const [userSearch, setUserSearch] = useState('');
 	const [userResults, setUserResults] = useState('');
 	const [userLat, setUserLat] = useState('');
-	const [userLong, setUserLong] = useState('');
+	const [userLon, setUserLon] = useState('');
 	const [userMap, setUserMap] = useState('');
+	const [userForecastData, setUserForecastData] = useState([]);
 	function userSearchHandler(event) {
 		setUserSearch(event.target.value);
 	}
@@ -24,12 +26,12 @@ function App() {
 			'&format=json';
 
 		const results = await Axios.get(API);
-		console.log(results);
+		//console.log(results);
 		setUserResults(results.data[0].display_name);
 
 		setUserLat(results.data[0].lat);
 
-		setUserLong(results.data[0].lon);
+		setUserLon(results.data[0].lon);
 
 		const map =
 			'https://maps.locationiq.com/v3/staticmap?key=' +
@@ -46,6 +48,22 @@ function App() {
 		const userMapResults = await Axios.get(map);
 
 		setUserMap(userMapResults.request.responseURL);
+
+		const forecastAPI =
+			'http://localhost:7878/weather?searchQuery=' +
+			userSearch +
+			'&format=json';
+
+		const forecastResults = await Axios.get(forecastAPI);
+		//console.log(forecastResults);
+		// const forecastArray = [];
+		// forecastArray.push(
+		// 	forecastResults.data[0],
+		// 	forecastResults.data[1],
+		// 	forecastResults.data[2]
+		// );
+		setUserForecastData(forecastResults.data);
+		console.log(userForecastData);
 	}
 
 	return (
@@ -58,10 +76,11 @@ function App() {
 				/>
 				<Results
 					userLat={userLat}
-					userLong={userLong}
+					userLon={userLon}
 					userResults={userResults}
 					userMap={userMap}
 				/>
+				<Forecast userForecastData={userForecastData} />
 			</div>
 			<Footer />
 		</div>
